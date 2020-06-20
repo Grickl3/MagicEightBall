@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	    <!-- <meta name="description" content=""> -->
+	    <!-- <meta name="author" content="">  -->
+	    <!-- <link rel="icon" href="../../favicon.ico"> -->
+		<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Rokkitt:200,400,900" rel="stylesheet">
+
+	    <style>
+	    	
+	    	/* COLOR SCHEME: http://paletton.com/#uid=15a0u0kllll5gNtditKtocWLg4x  */
+
+	    	body {
+	    		display: flex;
+	    		flex-direction: column;
+	    		align-items: center;
+
+	    		background-color: #1D0010;
+	    		text-align: center;
+	    	}
+
+	    	#information-icon {
+	    		background-color: #BE6F9C;
+	    		height: 24px;
+	    		width: 24px;
+	    		border-radius: 12px;
+
+	    		display: flex;
+	    		justify-content: center;
+	    		align-items: center;
+	    	}
+
+	    		#informaion-icon[title] {
+	    		background-color: #EAC3D9; 
+	    	}
+
+	    	#information-i {
+	    		font-family: 'Rokkitt', serif;
+	    		font-weight: 900;
+	    		font-size: 1.4em;
+	    		color: #530732;
+	    	}
+
+	    	#instructions {
+	    		color: #EAC3D9;
+	    		font-family: 'Rokkitt', serif;
+	    		font-weight: 200;
+	    		font-size: 1.2em;
+
+	    		margin: 60px 30px 45px 30px;
+	    	}
+
+	    	#button {
+	    		background-color: #530732;
+	    		color: white;
+	    		border-radius: 36px;
+
+	    		text-align: center;
+	    		font-family: 'Rokkitt', serif;
+	    		font-weight: 900;
+	    		font-size: 3em;
+
+	    		margin: 20px;
+	    		padding: 60px;
+	    		width: 40%;
+	    	}
+
+	    	#button:active {
+	    		background-color: #760043;
+	    	}
+
+	    	#answer {
+	    		color: white;
+	    		font-family: 'Berkshire Swash', cursive;
+	    		font-size: 2.6em;
+
+	    		max-width: 600px;
+	    		margin:30px;
+	    	}
+
+	    </style>
+
+    </head>
+    <body>
+    	<!-- <canvas data-processing-sources="gamesJs/8ball.pde" id="canvas"></canvas> -->
+    	
+    	<div id="information-icon" title="You have come seeking knowledge. 
+Consider your question.
+Be certain that it could be answered with 'yes' or 'no'."><span id="information-i">i</span></div>
+
+    	<!-- <p id="instructions">
+    		You have come seeking knowledge. Consider your question.<br>
+    		Be certain that it could be answered with "yes" or "no".
+		</p> -->
+		<div id="button">
+			Ask
+		</div>
+    	<h1 id="answer"> 
+    		No, sir. We thinks not.
+    	</h1>
+    	<script>
+    		
+    		//create random thought
+    		var possibleAnswers = ["Get real.", "no.", "Who gives a shit?", "Fuck yeah, bud!", "We do not bother the spirits for such prozaic drivel.", "Oh, yeah.", "hmm. We'll get back to you.", "Well, I know a guy who can make this whole concern go away. You know, for a price.", "Answers to questions like this require a few drinks.", "If so, you're going to need a shovel.", "Hey, I know where this is going.", "You ought to renew your passport either way.", "I can't see a way around it.", "It will never be.", "When I was your age, people knew better than to ask such upitty questions.", "Honey, bet on it.", "This thing shall be.", "I cannot see any other possibility.", "Affirmative.", "Negative.", "Yes, with glitter encrusted rainbows shooting out of cupcakes all over your new boat.", "Only if I can bring my quokka.", "Verily, and twice on Arbor Day."];
+    		var answerCount = possibleAnswers.length;
+
+			function getRandomInt(min, max) {
+  				min = Math.ceil(min);
+  				max = Math.floor(max);
+  				return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+			}
+
+			var which = [];
+    		console.log(which);
+
+			var divine = function() {
+	    		//insert said random thought into answer field
+	    		var which = getRandomInt(0, answerCount);
+	    		var prognostication = document.getElementById("answer");
+	    		prognostication.innerHTML = possibleAnswers[which];
+    		}
+
+    		var askButton = document.getElementById("button");
+    		var askClick = function() {
+    			divine();
+    		};
+
+    		askButton.addEventListener("click", divine);
+    		
+			//console.log(prognostication); 
+		</script>
+    </body>
+
+</html>
+<!-- <script src="gamesJs/processing.js"></script> -->
